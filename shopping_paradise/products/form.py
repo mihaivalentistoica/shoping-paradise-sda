@@ -7,7 +7,7 @@ class CouponForm(forms.Form):
     creator = forms.CharField(label="Creator", max_length=50)
     use_count = forms.IntegerField(label='Use count', min_value=1, max_value=100)
     percent_amount = forms.IntegerField(min_value=1, max_value=100)
-    expire_date = forms.DateField(label="Expire date", widget=forms.DateInput)
+    expire_date = forms.DateField(label="Expire date", widget=forms.SelectDateWidget(attrs={'class': 'dateInput'}))
 
     def clean(self):
         super(CouponForm, self).clean()
