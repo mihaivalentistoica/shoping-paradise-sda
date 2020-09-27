@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Products list</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <table>
     <tr>
         <th>PK</th>
@@ -27,5 +22,4 @@
 </table>
 <a href="{% url 'product-create' %}">Add product</a>
 
-</body>
-</html>
+{% endblock%}

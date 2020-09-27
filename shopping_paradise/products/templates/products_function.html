@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>List of products</h1>
-    {% for product in products %}
-    <h2>{{ product.name }}</h2>
-    <p>{{ product.price }}</p>
-    <p>{{ product.category.name }}</p>
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>List of products</h1>
+        {% for product in products %}
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price }}</p>
+        <p>{{ product.category.name }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

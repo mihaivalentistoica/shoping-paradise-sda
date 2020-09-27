@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Category detail</h1>
+<h3>Name: {{ category.name }}</h3>
+<h3>Primary key: {{ category.pk }}  </h3>
+<br>
+<a href="{% url 'category-update' category.pk %}">
+    Update category
+</a>
+<a href="{% url 'category-delete' category.pk %}">
+    Delete category
+</a>
+{% endblock %}

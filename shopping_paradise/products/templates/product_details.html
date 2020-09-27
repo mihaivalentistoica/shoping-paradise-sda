@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <h2>{{ product.name }}</h2>
 <h4>Category {{ product.category.name }} </h4>
 <h4>Price: {{ product.price }}</h4>
 <br/>
-<a href="">
+<a href="{% url 'product-update' product.pk %}">
     Update product
 </a>
-<a href="">
+<a href="{% url 'product-delete' product.pk %}">
     Delete product
 </a>
 
-</body>
-</html>
+{% endblock %}
