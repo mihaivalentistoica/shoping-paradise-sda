@@ -47,10 +47,10 @@
                 {% else %}
                     <li><a href="{% url 'user-login' %}?next={{ request.path }}">Login</a></li>
                 {% endif %}
-                <li><a href="{% url 'product-list' %}">Product list</a></li>
-                <li><a href="{% url 'product-create' %}">Create a product</a></li>
+                <li><a href="{% url 'product_list' %}">Product list</a></li>
+                <li><a href="{% url 'product_create' %}">Create a product</a></li>
                 <li><a href="{% url 'counter' %}">Visits count page</a></li>
-                <li><a href="{% url 'create-coupon' %}">My form</a></li>
+                <li><a href="{% url 'my_form' %}">My form</a></li>
             </ul>
         </div>
         <div class="col-sm-9">
@@ -65,4 +65,3 @@
 </footer>
 </body>
 </html>
-

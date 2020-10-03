@@ -26,5 +26,5 @@ urlpatterns = [
     path('', include(product_urlpatterns)),
     path('categories/', include(categories_urlpatterns)),
     path('coupon/', include(coupon_urlpatterns)),
-    path('views/', views.session_view),
+    path('views/', views.session_view, name="counter"),
 ]
