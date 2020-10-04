@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
-
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+
+from rest_framework import viewsets
 
 from .models import Product, Category
 from .form import CouponForm
+from .serializers import CategorySerializer, ProductSerializer
 
 
 class ProductsListByCat(View):
@@ -42,7 +45,8 @@ class ProductDelete(DeleteView):
     success_url = reverse_lazy('product-list')
 
 
-class ProductsList(ListView):
+class ProductsList(LoginRequiredMixin, ListView):
+    login_url = "user-login"
     model = Product
     template_name = 'product_list.html'
     context_object_name = 'products'
@@ -115,3 +119,18 @@ def session_view(request):
     print(dir(request.session))
     print(request.user)
     return render(request, 'views_page.html', {'views': count})
+
+
+# Api views
+
+class ProductViewSet(PermissionRequiredMixin, viewsets.ModelViewSet):
+    login_url = "user-login"
+    permission_required = 'products.can_put_sale'
+    queryset = Product.objects.all().order_by('name')
+    serializer_class = ProductSerializer
+
+
+class CategoryViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
+    login_url = "user-login"
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
